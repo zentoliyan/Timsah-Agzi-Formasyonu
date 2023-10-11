@@ -1,0 +1,19 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © zeubetella
+
+//@version=5
+indicator("Timsah Ağzı Formasyonu", overlay = true)
+
+p1 = input.int(5, title = "1.Hareketli Ortalama Periyodu")
+p1_formula = ta.ema((high + low) / 2, 2 * p1-1)
+
+p2 = input.int(8, title = "2.Hareketli Ortalama Periyodu")
+p2_formula = ta.ema((high + low) / 2, 2 * p2-1)
+
+p3 = input.int(13, title = "3.Hareketli Ortalama Periyodu")
+p3_formula = ta.ema((high + low) / 2, 2 * p3-1)
+
+// Plot'ları öteleme
+plot(p1_formula[3], color = color.white,  title="p1 (1 bar ötelendi)")
+plot(p2_formula[5], color = color.aqua,   title="p2 (2 bar ötelendi)")
+plot(p3_formula[8], color = color.purple, title="p3 (3 bar ötelendi)")
